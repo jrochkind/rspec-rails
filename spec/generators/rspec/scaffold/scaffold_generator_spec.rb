@@ -126,7 +126,7 @@ RSpec.describe Rspec::Generators::ScaffoldGenerator, type: :generator do
           it { is_expected.to contain(/assert_select "input\[name=\?\]", "post\[title\]/) }
         end
       end
-    when Rails.version.to_f >= 4.0
+    when Rails.version.to_f >= 5.0
       describe 'with reference attribute' do
         before { run_generator %w(posts title:string author:references) }
         describe 'edit' do
