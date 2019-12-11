@@ -24,7 +24,11 @@ function additional_specs_available {
 
 function documentation_enforced {
   if [ -x ./bin/yard ]; then
-    return 0
+    if is_mri; then
+      return 0
+    else
+      return 1
+    fi
   else
     return 1
   fi
