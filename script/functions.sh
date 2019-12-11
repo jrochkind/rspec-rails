@@ -158,6 +158,8 @@ function check_documentation_coverage {
     end
   "
 
+  echo "bin/yard doc --no-cache"
+
   # Some warnings only show up when generating docs, so do that as well.
   bin/yard doc --no-cache | ruby -e "
     while line = gets
