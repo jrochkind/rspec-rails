@@ -33,6 +33,11 @@ in_root do
     append_to_file('Gemfile', "gem 'rails-controller-testing'\n")
   end
 
+  # ToDo: Remove when not supporting Rails 4.2 anymore
+  if Rails::VERSION::STRING ~= /^4\./
+    append_to_file('Gemfile', "gem 'thor', '< 1.0'\n")
+  end
+
   if Rails::VERSION::STRING >= '6'
     gsub_file "Gemfile", /.*gem..sqlite3.*/, "gem 'sqlite3', '~> 1.4'"
     gsub_file "Gemfile", /.*rails-controller-testing.*/, "gem 'rails-controller-testing', git: 'https://github.com/rails/rails-controller-testing'"
